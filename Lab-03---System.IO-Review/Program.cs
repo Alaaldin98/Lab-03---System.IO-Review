@@ -9,18 +9,18 @@ namespace Lab_03___System.IO_Review
         {
 
             Console.WriteLine("Hello World!");
-         //   Challenge1();
-            Challenge2();
-            /*  Challenge3();
-              Challenge4();
-              Challenge5();
+              Challenge1();
+              Challenge2();
+              Challenge3();
+            //  Challenge4();
+            //  Challenge5();
               Console.WriteLine("Write your text here please ");
               string filePath = "words.txt";
               string content = Convert.ToString(Console.ReadLine());
               Challenge6(filePath, content);
               Challenge7(filePath);
               Challenge8(filePath);
-              Challenge9(); */
+            //  Challenge9(); 
         }
         public static int Challenge1()
         {
