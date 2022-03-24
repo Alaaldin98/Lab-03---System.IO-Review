@@ -1,26 +1,24 @@
 ﻿using System;
 using System.IO ;
 
-namespace Lab_03___System.IO_Review
+namespace Labtest
 {
-    internal class Program
+   public  class Program
     {
         static void Main(string[] args)
         {
 
             Console.WriteLine("Hello World!");
-              Challenge1();
-              Challenge2();
-              Challenge3();
-            //  Challenge4();
-            //  Challenge5();
-              Console.WriteLine("Write your text here please ");
-              string filePath = "words.txt";
-              string content = Convert.ToString(Console.ReadLine());
-              Challenge6(filePath, content);
-              Challenge7(filePath);
-              Challenge8(filePath);
-            //  Challenge9(); 
+             Challenge1();
+             Challenge2();
+             Challenge3();
+             Challenge4();
+             Challenge5();             
+             string filePath = "words.txt";          
+             Challenge6(filePath); 
+             Challenge7(filePath);
+             Challenge8(filePath);
+             Challenge9(); 
         }
         public static int Challenge1()
         {
@@ -58,32 +56,46 @@ namespace Lab_03___System.IO_Review
             return 0;
         }
 
-        public static void Challenge2()
+        public static double Challenge2()
         {
-            bool b = true;
-            while (b)
+            try
             {
-                Console.Write("Please enter a number between 2-10: ");
-                int a = Convert.ToInt32(Console.ReadLine());
-                double[] arr = new double[0];
-                double sum = 0;
-                if (a < 2 || a > 10)
+                bool b = true;
+                while (b)
                 {
-                    Console.WriteLine("Wrong input please try again");
-                    b = false;
-                }
-                else
-                    arr = new double[a];
+                    Console.Write("Please enter a number between 2-10: ");
+                    int a = Convert.ToInt32(Console.ReadLine());
+                    double[] arr = new double[0];
+                    double sum = 0;
+                    if (a < 2 || a > 10)
+                    {
+                        Console.WriteLine("Wrong input please try again");
+                        b = false;
+                    }
+                    else
+                        arr = new double[a];
 
 
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    Console.Write($"{i + 1} of {arr.Length} - Enter a number: ");
-                    arr[i] = Convert.ToInt32(Console.ReadLine());
-                    sum += arr[i];
+                    for (int i = 0; i < arr.Length; i++)
+                    {
+                        Console.Write($"{i + 1} of {arr.Length} - Enter a number: ");
+                        arr[i] = Convert.ToInt32(Console.ReadLine());
+                        sum += arr[i];
+                    }
+
+                    Console.WriteLine($"The average of these {a} numbers is:  {sum / a}");
+                    break;
+                   
                 }
-                Console.WriteLine($"The average of these {a} numbers is:  {sum / a}");
-                break;
+                return 1;
+
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 1;
+                
             }
         }
 
@@ -114,51 +126,59 @@ namespace Lab_03___System.IO_Review
                 }
                 Console.ReadLine();
             }
-            static int Challenge4()
+     public   static int Challenge4()
+        {
+            int[] array = { 3, 4, 5, 5, 3,4,5,66,66,66,66 };
+            int count = 1, tCount;
+            int fNumber = array[0];
+            int tNumber = 0;
+            for (int i = 0; i < (array.Length - 1); i++)
             {
-                /*    int[] arr = { 1, 5, 2, 1, 3, 2, 1 };
-                    int n = arr.Length;
-                    // Insert all elements in hash
-                 int   Dictionary ;
-                        int hp = new Dictionary int, int ();
-
-                    for (int i = 0; i < n; i++)
+                tNumber = array[i];
+                tCount = 0;
+                for (int j = 0; j < array.Length; j++)
+                {
+                    if (tNumber == array[j])
                     {
-                        int key = arr[i];
-                        if (hp.ContainsKey(key))
-                        {
-                            int freq = hp[key];
-                            freq++;
-                            hp[key] = freq;
-                        }
-                        else
-                            hp.Add(key, 1);
+                        tCount++;
                     }
-
-                    // find max frequency.
-                    int min_count = 0, res = -1;
-
-                    foreach (KeyValuePair<int,int> pair in hp)
-                    {
-                        if (min_count < pair.Value)
-                        {
-                            res = pair.Key;
-                            min_count = pair.Value;
-                        }
-                    } */
-                Console.WriteLine();
-                return 0;
+                }
+                if (tCount > count)
+                {
+                    fNumber = tNumber;
+                    count = tCount;
+                }
             }
-            static int Challenge5()
+            Console.WriteLine("The most frequent number in this array is {0} has been repeated {1} times.", fNumber, count);
+            
+            return fNumber;
+        }
+            public static int Challenge5()
             {
-                return 0;
-            }
-
-
-            public static void Challenge6(String filePath, String content)
+            int[] arr = { 5, 45, 99, 123, 788, 96, 555, 108, -4 };
+            int max = arr[0];
+            for (int i = 0; i < arr.Length; i++)
             {
-                File.WriteAllText(filePath, content);
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
             }
+            Console.WriteLine("Max Value is : " + max);
+            return max;
+        }
+
+
+            public static void Challenge6(String filePath)
+            {
+            Console.WriteLine("Write your text here please ");
+            string content = Convert.ToString(Console.ReadLine());
+
+            if (File.Exists(filePath))
+            {
+                File.AppendAllText(filePath, content + Environment.NewLine);
+            }
+        }
             public static void Challenge7(String path)
             {
                 Console.WriteLine("Your text is: ");
@@ -168,25 +188,19 @@ namespace Lab_03___System.IO_Review
             }
             public static void Challenge8(String path)
             {
-                File.Delete(path);
-                Console.WriteLine("The file was deleted successfly");
-            }
-            public static void Challenge9()
+            string str = File.ReadAllText(path);
+            string word = str.Substring(0, str.LastIndexOf(' ')).TrimEnd();
+            Console.WriteLine(word);
+        }
+            public static string[] Challenge9()
             {
                 Console.WriteLine("Write your text please");
                 string text = Console.ReadLine();
-                Console.WriteLine(text);
-                int[] arr = new int[text.Length];
-                int count = 0;
-                char charToCount = 'i';
-                foreach (char c in arr)
-                {
-                    if (c == charToCount)
-                    {
-                        count++;
-                    }
-                }
-                Console.WriteLine(count);
+            string[] arr = text.Split(' ');
+            string[] words = new string[text.Length];
+            foreach (string a in arr)
+                Console.WriteLine("[" + a + ":" + a.Length + "],");
+            return words;
             }
 
         }
