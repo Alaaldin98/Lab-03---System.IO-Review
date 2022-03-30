@@ -7,44 +7,51 @@ namespace Labtest
     {
         static void Main(string[] args)
         {
-
+           // inputchal2();
             Console.WriteLine("Hello World!");
-             Challenge1();
-             Challenge2();
-             Challenge3();
-             Challenge4();
-             Challenge5();             
-             string filePath = "words.txt";          
-             Challenge6(filePath); 
-             Challenge7(filePath);
-             Challenge8(filePath);
-             Challenge9(); 
+            //Challenge1();
+            //Challenge2();
+            //Challenge3();
+            //int[] array = { 3, 4, 5, 5, 3, 4, 5, 66, 66, 66, 66 };
+            // Challenge4(array);
+            //int[] arr = { 5, 45, 99, 123, 788, 96, 555, 108, -4 };
+            //Challenge5(arr);             
+            //string filePath = @"C:\Users\User\source\repos\Lab-03---System.IO-Review\Lab-03---System.IO-Review\bin\Debug\net5.0\words.txt";
+            //Challenge6(filePath);
+            //Challenge7(filePath);
+            //Challenge8(filePath);
+            //Challenge9(); 
         }
-        public static int Challenge1()
+        public static void calinput()
+        {
+            Console.Write("Please enter 3 numbers by leaving a space between them: ");
+
+            string[] stat = Console.ReadLine().Split(' ');
+            Challenge1(stat);
+        }
+
+        public static int Challenge1(string[] stat)
         {
             try
             {
 
                 int mnum = 1;
-                Console.Write("Please enter 3 numbers by leaving a space between them: ");
+               
 
-                string line = Console.ReadLine();
-                
-                if (line.Length >= 3)
+
+                if ( stat.Length < 3)
                 {
-                    foreach (var item in line.Split(' '))
-                    {
-                        mnum = mnum * int.Parse(item);
-                    }
-                    Console.WriteLine("The product of these 3 numbers is: " + mnum);
-                    return mnum;
+                    Console.WriteLine("0");
+                    return 0;
                 }
 
-                if (line.Length < 3)
+
+               for (int i = 0; i < 3; i++)
                 {
-                    mnum = 0;
-                    return mnum;
+                    mnum = mnum * int.Parse(stat[i]);
                 }
+                Console.WriteLine("The product of these 3 numbers is: " + mnum);
+                return mnum;
             }
 
             catch (Exception)
@@ -53,43 +60,47 @@ namespace Labtest
                 Console.WriteLine(1);
                 return 1;
             }
-            return 0;
+           
+        }
+        public static void inputchal2()
+        {
+            Console.Write("Please enter a number between 2-10: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            double[] arr = new double[0];
+
+            bool b = true;
+            while (b)
+            {
+
+
+                if (a < 2 || a > 10)
+                {
+                    Console.WriteLine("Wrong input please try again");
+                    b = false;
+                }
+                else
+                    arr = new double[a];
+
+                Challenge2(arr);
+                b = false;
+            }
         }
 
-        public static double Challenge2()
+        public static double Challenge2(double[] arr)
         {
             try
             {
-                bool b = true;
-                while (b)
-                {
-                    Console.Write("Please enter a number between 2-10: ");
-                    int a = Convert.ToInt32(Console.ReadLine());
-                    double[] arr = new double[0];
-                    double sum = 0;
-                    if (a < 2 || a > 10)
-                    {
-                        Console.WriteLine("Wrong input please try again");
-                        b = false;
-                    }
-                    else
-                        arr = new double[a];
-
-
-                    for (int i = 0; i < arr.Length; i++)
+                double sum = 0;
+                for (int i = 0; i < arr.Length; i++)
                     {
                         Console.Write($"{i + 1} of {arr.Length} - Enter a number: ");
                         arr[i] = Convert.ToInt32(Console.ReadLine());
                         sum += arr[i];
+
                     }
+                Console.WriteLine($"The average of these {arr.Length} numbers is:  {sum / arr.Length}");
 
-                    Console.WriteLine($"The average of these {a} numbers is:  {sum / a}");
-                    break;
-                   
-                }
-                return 1;
-
-
+                return sum / arr.Length;
             }
             catch(Exception e)
             {
@@ -126,9 +137,9 @@ namespace Labtest
                 }
                 Console.ReadLine();
             }
-     public   static int Challenge4()
+     public   static int Challenge4(int[] array)
         {
-            int[] array = { 3, 4, 5, 5, 3,4,5,66,66,66,66 };
+           
             int count = 1, tCount;
             int fNumber = array[0];
             int tNumber = 0;
@@ -153,9 +164,9 @@ namespace Labtest
             
             return fNumber;
         }
-            public static int Challenge5()
+            public static int Challenge5(int[] arr)
             {
-            int[] arr = { 5, 45, 99, 123, 788, 96, 555, 108, -4 };
+          
             int max = arr[0];
             for (int i = 0; i < arr.Length; i++)
             {
